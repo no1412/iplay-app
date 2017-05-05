@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_margin="5dp">
+
+    <ImageView
+        android:id="@+id/id_food_surface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/avatar"/>
+    <TextView
+        android:id="@+id/id_food_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="2dp"
+        android:text="遇到一个很好吃的披萨"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="2dp">
+        <ImageView
+            android:id="@+id/id_user_head_pic"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/user_head"/>
+        <TextView
+            android:id="@+id/id_user_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:text="阿萨德"/>
+    </LinearLayout>
+
+</LinearLayout>
