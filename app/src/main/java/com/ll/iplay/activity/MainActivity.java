@@ -20,9 +20,11 @@ import com.ll.iplay.fragment.EnterttainmentFragment;
 import com.ll.iplay.fragment.FoodFragment;
 import com.ll.iplay.fragment.MyFragment;
 import com.ll.iplay.model.Food;
+import com.ll.iplay.refactor.FixedSpeedScroller;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initView();
     }
 
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void initView() {
         mainViewPager = (ViewPager) findViewById(R.id.id_main_viewpager);
+        setViewPagerScrollSpeed();
         foodTextView = (TextView) findViewById(R.id.id_tv_food);
         entertainmentView = (TextView) findViewById(R.id.id_tv_entertainment);
         myTextView = (TextView) findViewById(R.id.id_tv_my);
@@ -156,4 +158,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * 设置ViewPager的滑动速度
+     */
+    private void setViewPagerScrollSpeed( ){
+        try {
+            Field mScroller = null;
+            mScroller = ViewPager.class.getDeclaredField("mScroller");
+            mScroller.setAccessible(true);
+            FixedSpeedScroller scroller = new FixedSpeedScroller( mainViewPager.getContext( ) );
+            mScroller.set( mainViewPager, scroller);
+        }catch(NoSuchFieldException e){
+
+        }catch (IllegalArgumentException e){
+
+        }catch (IllegalAccessException e){
+
+        }
+    }
 }

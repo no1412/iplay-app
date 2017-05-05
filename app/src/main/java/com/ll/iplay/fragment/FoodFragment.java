@@ -41,23 +41,17 @@ public class FoodFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.food_fragment,container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        //初试化food
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        //初试化food
         initFoods();
+        return view;
     }
 
     /**
      * 从服务器获取美食简介数据
      */
     private void initFoods() {
-        showProgressDialog();
         foodDescribes.clear();
         String getFoodDEscribesUrl = Constants.REQUEST_PREFIX + "food/getFoodDescribe";
         HttpUtil.sendOkHttpRequest(getFoodDEscribesUrl, new Callback() {
@@ -67,7 +61,6 @@ public class FoodFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        closeProgressDialog();
                         Toast.makeText(getContext(), "获取美食信息失败", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -80,7 +73,6 @@ public class FoodFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        closeProgressDialog();
                         recyclerView.setAdapter(new FoodAdapter(getContext(), foodDescribes));
                     }
                 });

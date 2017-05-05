@@ -40,16 +40,11 @@ public class EnterttainmentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.entertainment_fragment,container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        //初试化enterttainment
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        //初试化enterttainment
         initEnterttainment();
+        return view;
     }
 
     private void initEnterttainment() {
