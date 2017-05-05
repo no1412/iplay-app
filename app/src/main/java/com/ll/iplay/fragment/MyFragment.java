@@ -18,6 +18,6 @@ public class MyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.my_fragment,container, false);
+        return inflater.inflate(R.layout.my_center,container, false);
     }
 }

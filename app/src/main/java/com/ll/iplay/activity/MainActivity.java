@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ll.iplay.adapter.FoodAdapter;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout foodLinearLayout;
     private LinearLayout entertainmentLinearLayout;
     private LinearLayout myLinearLayout;
+    private RelativeLayout topBarRelativeLayout;
 
     private PagerAdapter pagerAdapter;
 
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         foodLinearLayout = (LinearLayout) findViewById(R.id.id_layout_food);
         entertainmentLinearLayout = (LinearLayout) findViewById(R.id.id_layout_entertainment);
         myLinearLayout = (LinearLayout) findViewById(R.id.id_layout_my);
-
+        topBarRelativeLayout = (RelativeLayout) findViewById(R.id.id_top_bar);
 
         fragmentList = new ArrayList<Fragment>();
 
@@ -115,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 resetTextView();
                 foodTextView.setTextColor(Color.parseColor("#941AE6"));
+                topBarRelativeLayout.setVisibility(View.VISIBLE);
                 mainViewPager.setCurrentItem(0);
             }
         });
@@ -123,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 resetTextView();
                 entertainmentView.setTextColor(Color.parseColor("#941AE6"));
+                topBarRelativeLayout.setVisibility(View.VISIBLE);
                 mainViewPager.setCurrentItem(1);
             }
         });
@@ -131,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 resetTextView();
                 myTextView.setTextColor(Color.parseColor("#941AE6"));
+                topBarRelativeLayout.setVisibility(View.GONE);
                 mainViewPager.setCurrentItem(2);
             }
         });

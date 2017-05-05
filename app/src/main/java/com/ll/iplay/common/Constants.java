@@ -6,7 +6,7 @@ package com.ll.iplay.common;
 
 public class Constants {
 
-    public static String REQUEST_PREFIX = "http://192.168.95.1:8080/iplay/";
+    public static String REQUEST_PREFIX = "http://192.168.191.1:8080/iplay/";
 
     public static String APP_KEY = "";
 }
