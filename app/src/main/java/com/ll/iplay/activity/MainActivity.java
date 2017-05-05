@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         initView();
     }
 
+    /**
+     * 初试化控件
+     */
     private void initView() {
         mainViewPager = (ViewPager) findViewById(R.id.id_main_viewpager);
         foodTextView = (TextView) findViewById(R.id.id_tv_food);
@@ -143,6 +146,9 @@ public class MainActivity extends AppCompatActivity {
         mainViewPager.setAdapter(pagerAdapter);
     }
 
+    /**
+     * 重置配色
+     */
     private void resetTextView() {
         foodTextView.setTextColor(Color.parseColor("#000000"));
         entertainmentView.setTextColor(Color.parseColor("#000000"));

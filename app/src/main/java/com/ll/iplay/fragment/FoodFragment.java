@@ -15,7 +15,7 @@ import com.ll.iplay.activity.R;
 import com.ll.iplay.adapter.FoodAdapter;
 import com.ll.iplay.common.Constants;
 import com.ll.iplay.gson.FoodDescribe;
-import com.ll.iplay.hendler.FoodHandler;
+import com.ll.iplay.handler.FoodHandler;
 import com.ll.iplay.util.HttpUtil;
 
 import java.io.IOException;
@@ -35,6 +35,7 @@ public class FoodFragment extends Fragment {
     private ProgressDialog progressDialog;
 
     private List<FoodDescribe> foodDescribes = new ArrayList<FoodDescribe>();
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,6 +53,9 @@ public class FoodFragment extends Fragment {
         initFoods();
     }
 
+    /**
+     * 从服务器获取美食简介数据
+     */
     private void initFoods() {
         showProgressDialog();
         foodDescribes.clear();
@@ -82,18 +86,6 @@ public class FoodFragment extends Fragment {
                 });
             }
         });
-//        Food food1 = new Food(R.drawable.pizza, "遇到一个很好吃的披萨", R.drawable.user_head, "阿萨德");
-//        foodList.add(food1);
-//        Food food2 = new Food(R.drawable.pizza, "遇到一个很好吃的披萨", R.drawable.user_head, "阿萨德");
-//        foodList.add(food2);
-//        Food food3 = new Food(R.drawable.avatar, "遇到一个很好吃的披萨", R.drawable.user_head, "阿萨德");
-//        foodList.add(food3);
-//        Food food4 = new Food(R.drawable.pizza, "遇到一个很好吃的披萨", R.drawable.user_head, "阿萨德");
-//        foodList.add(food4);
-//        Food food5 = new Food(R.drawable.pizza, "遇到一个很好吃的披萨", R.drawable.user_head, "阿萨德");
-//        foodList.add(food5);
-//        Food food6 = new Food(R.drawable.avatar, "遇到一个很好吃的披萨", R.drawable.user_head, "阿萨德");
-//        foodList.add(food6);
     }
     /**
      * 显示进度对话框
