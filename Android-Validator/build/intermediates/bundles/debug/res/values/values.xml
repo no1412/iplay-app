@@ -8,7 +8,7 @@
     <string name="validator_hex">The value has not only hexadecimal digit characters.</string>
     <string name="validator_ip">The ip address is not valid.</string>
     <string name="validator_num">Inputed text contains something that isn\'t numeric.</string>
-    <string name="validator_phone">Phone number is not in a valid format.</string>
+    <string name="validator_phone"/>
     <string name="validator_range">The value is not between the required range.</string>
     <string name="validator_regexp">The value does not match against pattern.</string>
     <string name="validator_url">The URL entered is incorrect.</string>

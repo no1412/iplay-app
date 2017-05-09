@@ -1,0 +1,11 @@
+<resources>
+    <string name="nick_name_error_msg">昵称需要小于10个字符</string>
+    <string name="password_error_msg">密码至少需要6位</string>
+    <string name="confirm_password_error_msg">重复密码和密码不一致</string>
+    <string name="confirm_password_length_error_msg">重复密码和密码不一致</string>
+
+    <string name="phone_not_empty">手机号不为空</string>
+    <string name="nick_name_not_empty">昵称不为空</string>
+    <string name="password_not_empty">密码不为空</string>
+    <string name="confirm_password_not_empty">确认密码不为空</string>
+</resources>

@@ -18,9 +18,10 @@ public final class R {
         public static int validator_empty=0x7f020003;
         public static int validator_hex=0x7f020004;
         public static int validator_ip=0x7f020009;
-        public static int validator_num=0x7f02000a;
+        public static int validator_length=0x7f02000a;
+        public static int validator_num=0x7f02000b;
         public static int validator_phone=0x7f020005;
-        public static int validator_range=0x7f02000b;
+        public static int validator_range=0x7f02000c;
         public static int validator_regexp=0x7f020006;
         public static int validator_url=0x7f020007;
     }
