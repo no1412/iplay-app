@@ -52,6 +52,7 @@ public class FoodFragment extends Fragment {
      * 从服务器获取美食简介数据
      */
     private void initFoods() {
+        showProgressDialog();
         foodDescribes.clear();
         String getFoodDEscribesUrl = Constants.REQUEST_PREFIX + "food/getFoodDescribe";
         HttpUtil.sendOkHttpRequest(getFoodDEscribesUrl, new Callback() {
@@ -61,6 +62,7 @@ public class FoodFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        closeProgressDialog();
                         Toast.makeText(getContext(), "获取美食信息失败", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -73,6 +75,7 @@ public class FoodFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        closeProgressDialog();
                         recyclerView.setAdapter(new FoodAdapter(getContext(), foodDescribes));
                     }
                 });

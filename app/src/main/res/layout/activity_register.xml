@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/id_user_phone"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_style"
+            android:layout_gravity="center"
+            android:hint="手机号"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/id_user_nick_name"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_style"
+            android:layout_gravity="center"
+            android:hint="昵称"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:paddingLeft="8dp"
+            android:inputType="textPassword"
+            android:background="@drawable/edit_text_style"
+            android:layout_gravity="center"
+            android:hint="密码"
+            />
+
+        <Button
+            android:id="@+id/id_register_btn"
+            android:layout_width="300dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/button_corner_style"
+            android:textColor="@color/white"
+            android:text="注册"/>
+
+        <TextView
+            android:id="@+id/id_login_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="已有密码？请登录"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/deepGray"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,28 +1,30 @@
 package com.ll.iplay.activity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.ll.iplay.adapter.FoodAdapter;
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.ll.iplay.fragment.EnterttainmentFragment;
 import com.ll.iplay.fragment.FoodFragment;
 import com.ll.iplay.fragment.MyFragment;
-import com.ll.iplay.model.Food;
 import com.ll.iplay.refactor.FixedSpeedScroller;
-
-import org.w3c.dom.Text;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView foodTextView;
     private TextView entertainmentView;
     private TextView myTextView;
+    private TextView cityLocationTextView;
     private LinearLayout foodLinearLayout;
     private LinearLayout entertainmentLinearLayout;
     private LinearLayout myLinearLayout;
@@ -46,11 +49,25 @@ public class MainActivity extends AppCompatActivity {
     private EnterttainmentFragment enterttainmentFragment;
     private MyFragment myFragment;
 
+    //声明AMapLocationClient类对象
+    public AMapLocationClient mLocationClient = null;
+    //声明定位回调监听器
+    public AMapLocationListener mLocationListener;
+    //声明AMapLocationClientOption对象
+    public AMapLocationClientOption mLocationOption = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        initLocation();
         initView();
+        /*if (prefs.getString("user", null) == null) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }*/
     }
 
     /**
@@ -62,11 +79,14 @@ public class MainActivity extends AppCompatActivity {
         foodTextView = (TextView) findViewById(R.id.id_tv_food);
         entertainmentView = (TextView) findViewById(R.id.id_tv_entertainment);
         myTextView = (TextView) findViewById(R.id.id_tv_my);
+        cityLocationTextView = (TextView) findViewById(R.id.id_city_location);
         foodLinearLayout = (LinearLayout) findViewById(R.id.id_layout_food);
         entertainmentLinearLayout = (LinearLayout) findViewById(R.id.id_layout_entertainment);
         myLinearLayout = (LinearLayout) findViewById(R.id.id_layout_my);
         topBarRelativeLayout = (RelativeLayout) findViewById(R.id.id_top_bar);
 
+        //设置缓存view 的个数（实际有3个，缓存2个+正在显示的1个）
+        mainViewPager.setOffscreenPageLimit(2);
         fragmentList = new ArrayList<Fragment>();
 
         foodFragment = new FoodFragment();
@@ -175,5 +195,47 @@ public class MainActivity extends AppCompatActivity {
         }catch (IllegalAccessException e){
 
         }
+    }
+    /**
+     * 初试化定位
+     */
+    public void initLocation() {
+        //初始化定位
+        mLocationClient = new AMapLocationClient(this.getApplicationContext());
+        //设置定位回调监听
+        mLocationClient.setLocationListener(new AMapLocationListener() {
+            @Override
+            public void onLocationChanged(AMapLocation aMapLocation) {
+                if (aMapLocation != null) {
+                    if (aMapLocation.getErrorCode() == 0) {
+                        //可在其中解析amapLocation获取相应内容。
+                        cityLocationTextView.setText(aMapLocation.getCity());
+                    }else {
+                        //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
+                        Toast.makeText(getApplicationContext(), "定位失败", Toast.LENGTH_SHORT).show();
+                        Log.e("AmapError","location Error, ErrCode:"
+                                + aMapLocation.getErrorCode() + ", errInfo:"
+                                + aMapLocation.getErrorInfo());
+                    }
+                }
+            }
+        });
+        //初始化AMapLocationClientOption对象
+        mLocationOption = new AMapLocationClientOption();
+        //设置定位模式为AMapLocationMode.Battery_Saving，低功耗模式。
+        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Battery_Saving);
+        //获取一次定位结果：
+        //该方法默认为false。
+        mLocationOption.setOnceLocation(true);
+
+        //获取最近3s内精度最高的一次定位结果：
+        //设置setOnceLocationLatest(boolean b)接口为true，启动定位时SDK会返回最近3s内精度最高的一次定位结果。如果设置其为true，setOnceLocation(boolean b)接口也会被设置为true，反之不会，默认为false。
+        mLocationOption.setOnceLocationLatest(true);
+
+        //给定位客户端对象设置定位参数
+        mLocationClient.setLocationOption(mLocationOption);
+        //启动定位
+        mLocationClient.startLocation();
+
     }
 }
