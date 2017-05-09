@@ -1,0 +1,159 @@
+[
+    {
+        "outputFile": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-ko\\values-ko.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 83,
+                    "endOffset": 134
+                },
+                "from": {
+                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values-ko\\values-ko.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 83,
+                        "endOffset": 134
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 139,
+                    "endColumn": 61,
+                    "endOffset": 196
+                },
+                "from": {
+                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values-ko\\values-ko.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 139,
+                        "endColumn": 61,
+                        "endOffset": 196
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 201,
+                    "endColumn": 62,
+                    "endOffset": 259
+                },
+                "from": {
+                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values-ko\\values-ko.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 201,
+                        "endColumn": 62,
+                        "endOffset": 259
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 264,
+                    "endColumn": 73,
+                    "endOffset": 333
+                },
+                "from": {
+                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values-ko\\values-ko.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 264,
+                        "endColumn": 73,
+                        "endOffset": 333
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 338,
+                    "endColumn": 93,
+                    "endOffset": 427
+                },
+                "from": {
+                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values-ko\\values-ko.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 338,
+                        "endColumn": 93,
+                        "endOffset": 427
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 432,
+                    "endColumn": 63,
+                    "endOffset": 491
+                },
+                "from": {
+                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values-ko\\values-ko.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 432,
+                        "endColumn": 63,
+                        "endOffset": 491
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 496,
+                    "endColumn": 86,
+                    "endOffset": 578
+                },
+                "from": {
+                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values-ko\\values-ko.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 496,
+                        "endColumn": 86,
+                        "endOffset": 578
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 583,
+                    "endColumn": 60,
+                    "endOffset": 639
+                },
+                "from": {
+                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values-ko\\values-ko.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 583,
+                        "endColumn": 60,
+                        "endOffset": 639
+                    }
+                }
+            }
+        ]
+    }
+]
