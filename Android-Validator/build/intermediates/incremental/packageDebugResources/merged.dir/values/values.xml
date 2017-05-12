@@ -4,11 +4,12 @@
     <string name="validator_confirm">The confirm field is not valid.</string>
     <string name="validator_date">The entered date is not valid.</string>
     <string name="validator_email">The e-mail address is not in a valid format.</string>
-    <string name="validator_empty">You must complete this field.</string>
+    <string name="validator_empty">不能为空</string>
     <string name="validator_hex">The value has not only hexadecimal digit characters.</string>
     <string name="validator_ip">The ip address is not valid.</string>
-    <string name="validator_num">Inputed text contains something that isn\'t numeric.</string>
-    <string name="validator_phone"/>
+    <string name="validator_length">The value is not between the required range.</string>
+    <string name="validator_num">需要输入数字内容</string>
+    <string name="validator_phone">电话号码格式有误</string>
     <string name="validator_range">The value is not between the required range.</string>
     <string name="validator_regexp">The value does not match against pattern.</string>
     <string name="validator_url">The URL entered is incorrect.</string>

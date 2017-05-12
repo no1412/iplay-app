@@ -6,7 +6,13 @@ package com.ll.iplay.common;
 
 public class Constants {
 
-    public static String REQUEST_PREFIX = "http://192.168.191.1:8080/iplay/";
+    public static final String REQUEST_PREFIX = "http://192.168.191.1:8080/iplay/";
 
-    public static String APP_KEY = "";
+    public static final String APP_KEY = "199504110000";
+
+    public static final String SUCCESS = "1";
+    public static final String FAILURE = "0";
+
+
+    public static final String SEVER_EXCEPTION = "服务器异常!";
 }

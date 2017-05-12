@@ -211,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
                         //可在其中解析amapLocation获取相应内容。
                         cityLocationTextView.setText(aMapLocation.getCity());
                     }else {
+                        cityLocationTextView.setText("正在定位...");
                         //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
                         Toast.makeText(getApplicationContext(), "定位失败", Toast.LENGTH_SHORT).show();
                         Log.e("AmapError","location Error, ErrCode:"

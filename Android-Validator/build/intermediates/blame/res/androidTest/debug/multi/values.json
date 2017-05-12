@@ -55,20 +55,27 @@
                     "startLine": 6,
                     "startColumn": 4,
                     "startOffset": 381,
-                    "endColumn": 73,
-                    "endOffset": 450
+                    "endColumn": 48,
+                    "endOffset": 425
                 },
                 "from": {
-                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 381,
+                        "endColumn": 48,
+                        "endOffset": 425
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 455,
+                    "startOffset": 430,
                     "endColumn": 94,
-                    "endOffset": 545
+                    "endOffset": 520
                 },
                 "from": {
                     "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
@@ -78,9 +85,9 @@
                 "to": {
                     "startLine": 8,
                     "startColumn": 4,
-                    "startOffset": 550,
+                    "startOffset": 525,
                     "endColumn": 69,
-                    "endOffset": 615
+                    "endOffset": 590
                 },
                 "from": {
                     "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
@@ -90,30 +97,37 @@
                 "to": {
                     "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 620,
-                    "endColumn": 94,
-                    "endOffset": 710
+                    "startOffset": 595,
+                    "endColumn": 89,
+                    "endOffset": 680
                 },
                 "from": {
-                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 595,
+                        "endColumn": 89,
+                        "endOffset": 680
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 715,
-                    "endColumn": 36,
-                    "endOffset": 747
+                    "startOffset": 685,
+                    "endColumn": 50,
+                    "endOffset": 731
                 },
                 "from": {
                     "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 715,
-                        "endColumn": 36,
-                        "endOffset": 747
+                        "startOffset": 685,
+                        "endColumn": 50,
+                        "endOffset": 731
                     }
                 }
             },
@@ -121,21 +135,28 @@
                 "to": {
                     "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 752,
-                    "endColumn": 88,
-                    "endOffset": 836
+                    "startOffset": 736,
+                    "endColumn": 52,
+                    "endOffset": 784
                 },
                 "from": {
-                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 736,
+                        "endColumn": 52,
+                        "endOffset": 784
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 841,
-                    "endColumn": 86,
-                    "endOffset": 923
+                    "startOffset": 789,
+                    "endColumn": 88,
+                    "endOffset": 873
                 },
                 "from": {
                     "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
@@ -145,9 +166,9 @@
                 "to": {
                     "startLine": 13,
                     "startColumn": 4,
-                    "startOffset": 928,
-                    "endColumn": 71,
-                    "endOffset": 995
+                    "startOffset": 878,
+                    "endColumn": 86,
+                    "endOffset": 960
                 },
                 "from": {
                     "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
@@ -157,9 +178,21 @@
                 "to": {
                     "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 1000,
+                    "startOffset": 965,
                     "endColumn": 71,
-                    "endOffset": 1067
+                    "endOffset": 1032
+                },
+                "from": {
+                    "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1037,
+                    "endColumn": 71,
+                    "endOffset": 1104
                 },
                 "from": {
                     "file": "G:\\Android\\Android_stodio_workspace\\IPlay\\Android-Validator\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"

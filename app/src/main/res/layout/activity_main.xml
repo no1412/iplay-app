@@ -18,10 +18,10 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:textColor="@color/white"
-            android:text=""
+            android:text="正在定位..."
             android:gravity="center"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginStart="18dp" />
 
         <EditText

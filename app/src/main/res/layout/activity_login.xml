@@ -26,16 +26,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <EditText
+            android:id="@+id/id_user_phone"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:paddingLeft="10dp"
             android:background="@drawable/edit_text_style"
             android:layout_gravity="center"
             android:hint="手机号"
-            android:inputType="phone"
-            android:id="@+id/editText2" />
+            android:inputType="phone" />
 
             <EditText
+                android:id="@+id/id_user_password"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:paddingLeft="8dp"

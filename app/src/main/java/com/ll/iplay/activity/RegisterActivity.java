@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ll.iplay.common.Constants;
 import com.ll.iplay.util.HttpUtil;
 import com.throrinstudio.android.common.libs.validator.Form;
 import com.throrinstudio.android.common.libs.validator.Validate;
@@ -21,6 +22,8 @@ import com.throrinstudio.android.common.libs.validator.validator.PhoneValidator;
 import com.throrinstudio.android.common.libs.validator.validator.RangeValidator;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -32,6 +35,9 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText phoneEditText, nickNameEditText, passwordEditText, confirmPasswordEditText;
     private Button registerButton;
     private Form form;
+
+    //错误代码
+    private static final String PHONE_NUMBER_EXIST_ERROR_CODE = "10";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +55,9 @@ public class RegisterActivity extends AppCompatActivity {
         passwordEditText = (EditText) findViewById(R.id.id_user_password);
         confirmPasswordEditText = (EditText) findViewById(R.id.id_user_confirm_password);
         registerButton = (Button) findViewById(R.id.id_register_btn);
+    }
 
+    private void setListener() {
         loginTip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,16 +66,58 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-    }
-
-    private void setListener() {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean flag = form.validate();
                 if(flag){
-                    Toast.makeText(RegisterActivity.this, "验证成功！", Toast.LENGTH_LONG).show();
+                    String url = Constants.REQUEST_PREFIX + "user/userRegister";
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("phoneNumber", phoneEditText.getText().toString().trim());
+                    params.put("nickName", nickNameEditText.getText().toString().trim());
+                    params.put("password", passwordEditText.getText().toString().trim());
+                    params.put("appKey", Constants.APP_KEY);
+                    HttpUtil.sendOkHttpRequestByPost(url, params, new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(RegisterActivity.this, Constants.SEVER_EXCEPTION, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            final String responseText = response.body().string();
+                            if (responseText.equals(PHONE_NUMBER_EXIST_ERROR_CODE)) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        phoneEditText.setError("该手机号已存在");
+                                    }
+                                });
+                            } else if (responseText.equals(Constants.SUCCESS)) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(RegisterActivity.this, "注册成功！", Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                });
+                            } else {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(RegisterActivity.this, "出现错误", Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                            }
+                        }
+                    });
                 }else{
                     Toast.makeText(RegisterActivity.this, "请按要求填写!", Toast.LENGTH_LONG).show();
                 }
@@ -77,16 +127,29 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    String url = "";
+                    String url = Constants.REQUEST_PREFIX + "user/verifyPhoneNumberIsExist?appKey=" + Constants.APP_KEY + "&phoneNumber=" + phoneEditText.getText().toString().trim();
                     HttpUtil.sendOkHttpRequest(url, new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
-                            Toast.makeText(RegisterActivity.this, "服务器异常！", Toast.LENGTH_LONG).show();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(RegisterActivity.this, Constants.SEVER_EXCEPTION, Toast.LENGTH_LONG).show();
+                                }
+                            });
                         }
 
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
-
+                            final String responseText = response.body().string();
+                            if (Constants.SUCCESS.equals(responseText)) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        phoneEditText.setError("该手机号已存在");
+                                    }
+                                });
+                            }
                         }
                     });
                 }
