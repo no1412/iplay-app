@@ -6,6 +6,11 @@
     android:background="@color/white"
     android:layout_margin="5dp">
 
+    <TextView
+        android:id="@+id/id_food_id"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <ImageView
         android:id="@+id/id_food_surface"
         android:layout_width="wrap_content"

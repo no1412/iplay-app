@@ -29,6 +29,7 @@ public class EntertainmentAdapter extends RecyclerView.Adapter<EntertainmentAdap
         ImageView userHead;
         TextView foodTitle;
         TextView userNickName;
+        TextView entertainmentId;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -36,6 +37,7 @@ public class EntertainmentAdapter extends RecyclerView.Adapter<EntertainmentAdap
             userHead = (ImageView) itemView.findViewById(R.id.id_user_head_pic);
             foodTitle = (TextView) itemView.findViewById(R.id.id_entertainment_title);
             userNickName = (TextView) itemView.findViewById(R.id.id_user_nick_name);
+            entertainmentId = (TextView) itemView.findViewById(R.id.id_entertainment_id);
         }
     }
 
@@ -70,6 +72,7 @@ public class EntertainmentAdapter extends RecyclerView.Adapter<EntertainmentAdap
             .into(holder.userHead);
         holder.foodTitle.setText(entertainmentDescribe.getTitle());
         holder.userNickName.setText(entertainmentDescribe.getNickName());
+        holder.entertainmentId.setText(entertainmentDescribe.getId());
     }
 
     @Override

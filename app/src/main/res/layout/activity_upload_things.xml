@@ -4,7 +4,133 @@
     android:id="@+id/activity_upload_things"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:background="@color/blue"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
 
+        <ImageView
+            android:id="@+id/id_publish_image"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/publish"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true" />
+
+        <ImageView
+            android:id="@+id/id_back_image"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/back"
+            android:layout_marginLeft="5dp"
+            android:layout_alignTop="@+id/id_publish_image"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/id_upload_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@color/white"
+            android:hint="添加标题"/>
+
+        <View
+            android:layout_height="2px"
+            android:layout_width="match_parent"
+            android:background="@color/gray"
+        />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_gravity="center"
+                android:text="选择简介封面背景"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/id_upload_bg_image"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/gallery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/id_upload_bg"
+            android:src="@drawable/default_bg"
+            android:layout_width="64dp"
+            android:layout_height="64dp" />
+        <View
+            android:layout_height="2px"
+            android:layout_width="match_parent"
+            android:background="@color/gray"
+        />
+
+        <jp.wasabeef.richeditor.RichEditor
+            android:id="@+id/id_upload_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </jp.wasabeef.richeditor.RichEditor>
+
+    </LinearLayout>
+
+    <View
+        android:layout_height="2px"
+        android:layout_width="match_parent"
+        android:background="@color/gray"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/id_layout_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp" >
+            <ImageView
+                android:id="@+id/id_gallery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/gallery" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/id_layout_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp" >
+            <ImageView
+                android:id="@+id/id_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/camera" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

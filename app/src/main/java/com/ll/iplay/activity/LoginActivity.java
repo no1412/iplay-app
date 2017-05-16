@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                             User user = UserHandler.handleUserLoginResponse(responseText);
                             if (user.getResponseCode().equals(Constants.SUCCESS) ) {
                                 SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this).edit();
-                                editor.putString("user", responseText);
+                                editor.putString(Constants.USER, responseText);
                                 editor.apply();
                                 runOnUiThread(new Runnable() {
                                     @Override
@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                     });
 
                 } else {
-                    Toast.makeText(LoginActivity.this, "请按要求填写!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, Constants.FORM_WRONG_MSG, Toast.LENGTH_LONG).show();
                 }
             }
         });

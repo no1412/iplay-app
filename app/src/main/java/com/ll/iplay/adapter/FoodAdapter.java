@@ -12,6 +12,8 @@ import com.bumptech.glide.Glide;
 import com.ll.iplay.activity.R;
 import com.ll.iplay.gson.FoodDescribe;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -28,9 +30,11 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder>{
         ImageView userHead;
         TextView foodTitle;
         TextView userNickName;
+        TextView foodId;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            foodId = (TextView) itemView.findViewById(R.id.id_food_id);
             foodSurface = (ImageView) itemView.findViewById(R.id.id_food_surface);
             userHead = (ImageView) itemView.findViewById(R.id.id_user_head_pic);
             foodTitle = (TextView) itemView.findViewById(R.id.id_food_title);
@@ -69,6 +73,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder>{
             .into(holder.userHead);
         holder.foodTitle.setText(foodDescribe.getTitle());
         holder.userNickName.setText(foodDescribe.getNickName());
+        holder.foodId.setText(foodDescribe.getId());
     }
 
     @Override

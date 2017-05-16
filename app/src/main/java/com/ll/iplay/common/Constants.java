@@ -10,9 +10,12 @@ public class Constants {
 
     public static final String APP_KEY = "199504110000";
 
+    public static final String USER = "user";
+
     public static final String SUCCESS = "1";
     public static final String FAILURE = "0";
 
 
     public static final String SEVER_EXCEPTION = "服务器异常!";
+    public static final String FORM_WRONG_MSG = "请按要求填写!";
 }

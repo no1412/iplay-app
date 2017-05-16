@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -33,6 +34,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private List<Fragment> fragmentList;
 
+    private Button publishBtn;
     private ViewPager mainViewPager;
     private TextView foodTextView;
     private TextView entertainmentView;
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
      * 初试化控件
      */
     private void initView() {
+        publishBtn = (Button) findViewById(R.id.id_publish_btn);
         mainViewPager = (ViewPager) findViewById(R.id.id_main_viewpager);
         setViewPagerScrollSpeed();
         foodTextView = (TextView) findViewById(R.id.id_tv_food);
@@ -136,6 +139,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });*/
+
+        publishBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int number = mainViewPager.getCurrentItem();
+                Intent intent = new Intent(getApplicationContext(), UploadThingsActivity.class);
+                intent.putExtra("publishType", number);
+                startActivity(intent);
+            }
+        });
 
         foodLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
