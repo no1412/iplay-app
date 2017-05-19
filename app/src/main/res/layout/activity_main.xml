@@ -22,7 +22,7 @@
             android:gravity="center"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="18dp" />
+            android:layout_marginStart="10dp" />
 
         <EditText
             android:id="@+id/editText"

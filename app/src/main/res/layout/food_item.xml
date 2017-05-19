@@ -6,17 +6,17 @@
     android:background="@color/white"
     android:layout_margin="5dp">
 
-    <TextView
+    <LinearLayout
         android:id="@+id/id_food_id"
-        android:visibility="gone"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <ImageView
-        android:id="@+id/id_food_surface"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/avatar"/>
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/id_food_surface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/avatar"/>
+    </LinearLayout>
     <TextView
         android:id="@+id/id_food_title"
         android:layout_width="wrap_content"

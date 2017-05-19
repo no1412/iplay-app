@@ -14,17 +14,17 @@ public class FoodDescribe {
      * title : 这是一道比较好吃的美食
      * sendTime : 2017-05-11  10:34:00
      * publishTime : 1494470040000
-     * foodSurface : http://localhost:8080/iplay/static/img/food/avatar.png
+     * surface : http://localhost:8080/iplay/static/img/food/avatar.png
      */
 
     private String nickName;
     private String headPicUrl;
     private String id;
-    private String content;
+    private String contentDetail;
     private String title;
     private String sendTime;
     private long publishTime;
-    private String foodSurface;
+    private String surface;
 
     public String getNickName() {
         return nickName;
@@ -50,12 +50,12 @@ public class FoodDescribe {
         this.id = id;
     }
 
-    public String getContent() {
-        return content;
+    public String getContentDetail() {
+        return contentDetail;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setContentDetail(String contentDetail) {
+        this.contentDetail = contentDetail;
     }
 
     public String getTitle() {
@@ -82,11 +82,11 @@ public class FoodDescribe {
         this.publishTime = publishTime;
     }
 
-    public String getFoodSurface() {
-        return foodSurface;
+    public String getSurface() {
+        return surface;
     }
 
-    public void setFoodSurface(String foodSurface) {
-        this.foodSurface = foodSurface;
+    public void setSurface(String surface) {
+        this.surface = surface;
     }
 }

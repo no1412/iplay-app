@@ -22,6 +22,7 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.ll.iplay.common.Constants;
 import com.ll.iplay.fragment.EnterttainmentFragment;
 import com.ll.iplay.fragment.FoodFragment;
 import com.ll.iplay.fragment.MyFragment;
@@ -223,6 +224,10 @@ public class MainActivity extends AppCompatActivity {
                     if (aMapLocation.getErrorCode() == 0) {
                         //可在其中解析amapLocation获取相应内容。
                         cityLocationTextView.setText(aMapLocation.getCity());
+                        //保存当前城市编码
+                        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit();
+                        editor.putString(Constants.CURRENT_CITY_CODE, aMapLocation.getCityCode());
+                        editor.apply();
                     }else {
                         cityLocationTextView.setText("正在定位...");
                         //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。

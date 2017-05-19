@@ -1,6 +1,8 @@
 package com.ll.iplay.fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -19,7 +21,9 @@ import com.ll.iplay.util.HttpUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -48,8 +52,13 @@ public class EnterttainmentFragment extends Fragment {
     }
 
     private void initEnterttainment() {
-        String getFoodDEscribesUrl = Constants.REQUEST_PREFIX + "entertainment/getEntertainmentDescribe";
-        HttpUtil.sendOkHttpRequest(getFoodDEscribesUrl, new Callback() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String cityCode = sharedPreferences.getString(Constants.CURRENT_CITY_CODE, "");
+        String url = Constants.REQUEST_PREFIX + "content/getContentDescribe";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("cityCode", cityCode);
+        params.put("typeId", "2");
+        HttpUtil.sendOkHttpRequestByPost(url, params, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();

@@ -1,7 +1,9 @@
 package com.ll.iplay.fragment;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -20,7 +22,9 @@ import com.ll.iplay.util.HttpUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -33,12 +37,14 @@ import okhttp3.Response;
 public class FoodFragment extends Fragment {
     private RecyclerView recyclerView;
     private ProgressDialog progressDialog;
+    public static FoodFragment foodFragment;
 
     private List<FoodDescribe> foodDescribes = new ArrayList<FoodDescribe>();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        foodFragment = this;
         View view = inflater.inflate(R.layout.food_fragment,container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
@@ -54,8 +60,13 @@ public class FoodFragment extends Fragment {
     private void initFoods() {
         showProgressDialog();
         foodDescribes.clear();
-        String getFoodDEscribesUrl = Constants.REQUEST_PREFIX + "food/getFoodDescribe";
-        HttpUtil.sendOkHttpRequest(getFoodDEscribesUrl, new Callback() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String cityCode = sharedPreferences.getString(Constants.CURRENT_CITY_CODE, "");
+        String url = Constants.REQUEST_PREFIX + "content/getContentDescribe";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("cityCode", cityCode);
+        params.put("typeId", "1");
+        HttpUtil.sendOkHttpRequestByPost(url, params, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -82,6 +93,7 @@ public class FoodFragment extends Fragment {
             }
         });
     }
+
     /**
      * 显示进度对话框
      */

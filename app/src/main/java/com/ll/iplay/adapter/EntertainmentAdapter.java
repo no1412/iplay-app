@@ -60,7 +60,7 @@ public class EntertainmentAdapter extends RecyclerView.Adapter<EntertainmentAdap
         //Glide.with(mContext).load(mFoodList.get(position).getFoodSurface()).into(holder.foodSurface);
         Glide
             .with(mContext)
-            .load(entertainmentDescribes.get(position).getEntertainmentSurface())
+            .load(entertainmentDescribes.get(position).getSurface())
             .override(500, 600) // resizes the image to these dimensions (in pixel)
             .fitCenter() // this cropping technique scales the image so that it fills the requested bounds and then crops the extra.
             .into(holder.entertainmentSurface);

@@ -15,8 +15,10 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.ll.iplay.common.Constants;
 import com.ll.iplay.gson.User;
 import com.ll.iplay.handler.UserHandler;
@@ -25,9 +27,13 @@ import com.ll.iplay.util.FileUtils;
 import com.ll.iplay.util.HttpUtil;
 import com.throrinstudio.android.common.libs.validator.Form;
 import com.throrinstudio.android.common.libs.validator.Validate;
+import com.throrinstudio.android.common.libs.validator.validator.LengthValidator;
+import com.throrinstudio.android.common.libs.validator.validator.NotEmptyValidator;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import jp.wasabeef.richeditor.RichEditor;
 import okhttp3.Call;
@@ -39,6 +45,7 @@ public class UploadThingsActivity extends AppCompatActivity implements OnClickLi
 
     private static final String PHOTO_FILE_NAME = "take_photo.jpg";
 
+    private TextView uploadBgInVisible;
     private EditText uploadTitle;
     private LinearLayout camearLayout, galleryLayout;
     private ImageView uploadBg, uploadBgImage, backImage, publishImage;
@@ -46,12 +53,15 @@ public class UploadThingsActivity extends AppCompatActivity implements OnClickLi
 
     private Form form;
 
+    private int publishType;
     private String content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_things);
+        Intent intent = getIntent();
+        publishType = intent.getIntExtra("publishType", 0);
         initView();
         setListener();
         validateForm();
@@ -67,6 +77,7 @@ public class UploadThingsActivity extends AppCompatActivity implements OnClickLi
         mEditor = (RichEditor) findViewById(R.id.id_upload_content);
         camearLayout = (LinearLayout) findViewById(R.id.id_layout_camera);
         galleryLayout = (LinearLayout) findViewById(R.id.id_layout_gallery);
+        uploadBgInVisible = (TextView) findViewById(R.id.id_upload_bg_invisible);
         mEditor.setPlaceholder("请填写内容");
     }
 
@@ -174,6 +185,34 @@ public class UploadThingsActivity extends AppCompatActivity implements OnClickLi
                 Uri uri = data.getData();
                 Log.d("uri", data.getData().toString());
                 File file = saveAndNoUpload(FileUtils.getRealFilePath(this, uri));
+                HttpUtil.sendOkHttpRequestFileByPost(url, HttpUtil.MEDIA_TYPE_JPG, file, new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(UploadThingsActivity.this, Constants.SEVER_EXCEPTION, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        final String responseText = response.body().string();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Glide
+                                    .with(getApplicationContext())
+                                    .load(responseText)
+                                    .centerCrop()
+                                    .into(uploadBg);
+                                //设置隐藏域内容
+                                uploadBgInVisible.setText(responseText);
+                            }
+                        });
+                    }
+                });
             }
         }
     }
@@ -190,28 +229,80 @@ public class UploadThingsActivity extends AppCompatActivity implements OnClickLi
 
     public void publish() {
         boolean flag = form.validate();
+        if (uploadBgInVisible.getText().toString().equals("")) {
+            Toast.makeText(this, "需要选择一个背景", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (content == null || content.equals("")) {
+            Toast.makeText(this, "内容不为空", Toast.LENGTH_LONG).show();
+            mEditor.focusEditor();
+            return;
+        }
         if (flag) {
+            String url = Constants.REQUEST_PREFIX + "content/saveContent";
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
             User user = UserHandler.handleUserLoginResponse(prefs.getString(Constants.USER, null));
             if (user != null) {
-
+                SharedPreferences sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(UploadThingsActivity.this);
+                String currentCityCode = sharedPreferences.getString(Constants.CURRENT_CITY_CODE, "");
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("typeId", String.valueOf(publishType + 1));
+                params.put("userId", String.valueOf(user.getId()));
+                params.put("title", uploadTitle.getText().toString());
+                params.put("contentDetail", content);
+                params.put("surface", uploadBgInVisible.getText().toString());
+                params.put("cityCode", currentCityCode);
+                params.put("appKey", Constants.APP_KEY);
+                HttpUtil.sendOkHttpRequestByPost(url, params, new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(UploadThingsActivity.this, Constants.SEVER_EXCEPTION, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        final String responseText = response.body().string();
+                        if (responseText.equals(Constants.SUCCESS)) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(UploadThingsActivity.this, "发表成功", Toast.LENGTH_LONG).show();
+                                    UploadThingsActivity.this.finish();
+                                }
+                            });
+                        } else {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(UploadThingsActivity.this, "发表失败", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    }
+                });
             }
 
         } else {
             Toast.makeText(UploadThingsActivity.this, Constants.FORM_WRONG_MSG, Toast.LENGTH_LONG).show();
         }
-
     }
 
     private void validateForm() {
         // 1. 先创建个表单Form类用来装控件
         form = new Form();
+        Validate titleValidate = new Validate(uploadTitle);
+        titleValidate.addValidator(new NotEmptyValidator(this,R.string.title_not_empty));
+        titleValidate.addValidator(new LengthValidator(this, 1, 20, R.string.title_length_error_msg));
+
+        form.addValidates(titleValidate);
     }
 
     public void back() {
         UploadThingsActivity.this.finish();
-        Validate titleValidate = new Validate(uploadTitle);
-
     }
 
     @Override

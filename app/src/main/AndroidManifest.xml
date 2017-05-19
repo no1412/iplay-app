@@ -24,6 +24,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name="com.ll.iplay.MyApplication"
         android:allowBackup="true"
@@ -40,7 +41,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity android:name=".RegisterActivity" />
 
         <service android:name="com.amap.api.location.APSService" />
@@ -49,7 +50,8 @@
             android:name="com.amap.api.v2.apikey"
             android:value="8754fd4b85082d96591503cad2b49785" />
 
-        <activity android:name=".UploadThingsActivity"></activity>
+        <activity android:name=".UploadThingsActivity" />
+        <activity android:name=".ContentDetailActivity"></activity>
     </application>
 
 </manifest>

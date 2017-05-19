@@ -14,17 +14,17 @@ public class EntertainmentDescribe {
      * title : 熬好玩的耶
      * sendTime : 2017-05-03  10:35:04
      * publishTime : 1493778904000
-     * entertainmentSurface : http://192.168.191.1:8080/iplay/static/img/entertainment/
+     * surface : http://192.168.191.1:8080/iplay/static/img/entertainment/
      */
 
     private String nickName;
     private String headPicUrl;
     private String id;
-    private String content;
+    private String contentDetail;
     private String title;
     private String sendTime;
     private long publishTime;
-    private String entertainmentSurface;
+    private String surface;
 
     public String getNickName() {
         return nickName;
@@ -50,12 +50,12 @@ public class EntertainmentDescribe {
         this.id = id;
     }
 
-    public String getContent() {
-        return content;
+    public String getContentDetail() {
+        return contentDetail;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setContentDetail(String contentDetail) {
+        this.contentDetail = contentDetail;
     }
 
     public String getTitle() {
@@ -82,11 +82,11 @@ public class EntertainmentDescribe {
         this.publishTime = publishTime;
     }
 
-    public String getEntertainmentSurface() {
-        return entertainmentSurface;
+    public String getSurface() {
+        return surface;
     }
 
-    public void setEntertainmentSurface(String entertainmentSurface) {
-        this.entertainmentSurface = entertainmentSurface;
+    public void setSurface(String surface) {
+        this.surface = surface;
     }
 }

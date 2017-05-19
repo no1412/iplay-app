@@ -11,6 +11,7 @@ public class Constants {
     public static final String APP_KEY = "199504110000";
 
     public static final String USER = "user";
+    public static final String CURRENT_CITY_CODE = "currentCityCode";
 
     public static final String SUCCESS = "1";
     public static final String FAILURE = "0";
