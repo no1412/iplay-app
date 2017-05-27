@@ -13,7 +13,7 @@
             android:id="@+id/id_user_head_pic"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/user_head"
+            android:src="@drawable/head_default"
             android:layout_margin="10dp"/>
         <TextView
             android:id="@+id/id_user_nick_name"
@@ -32,7 +32,7 @@
         android:background="@color/white"
         android:text="个人信息设置"/>
     <TextView
-        android:id="@+id/id_user_log_out"
+        android:id="@+id/id_user_logout"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="40dp"

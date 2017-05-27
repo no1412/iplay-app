@@ -23,6 +23,7 @@ public class User {
     private String nickName;
     private String email;
     private String phoneNumber;
+    private String tipMsg;
 
     public int getId() {
         return id;
@@ -78,5 +79,13 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getTipMsg() {
+        return tipMsg;
+    }
+
+    public void setTipMsg(String tipMsg) {
+        this.tipMsg = tipMsg;
     }
 }

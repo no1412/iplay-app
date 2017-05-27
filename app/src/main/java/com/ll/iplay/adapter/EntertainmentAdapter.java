@@ -1,6 +1,7 @@
 package com.ll.iplay.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.ll.iplay.activity.ContentDetailActivity;
 import com.ll.iplay.activity.R;
+import com.ll.iplay.fragment.EnterttainmentFragment;
 import com.ll.iplay.gson.EntertainmentDescribe;
 import com.ll.iplay.gson.FoodDescribe;
 
@@ -54,7 +57,7 @@ public class EntertainmentAdapter extends RecyclerView.Adapter<EntertainmentAdap
     }
 
     @Override
-    public void onBindViewHolder(EntertainmentAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(EntertainmentAdapter.ViewHolder holder, final int position) {
 
         EntertainmentDescribe entertainmentDescribe = entertainmentDescribes.get(position);
         //Glide.with(mContext).load(mFoodList.get(position).getFoodSurface()).into(holder.foodSurface);
@@ -73,6 +76,16 @@ public class EntertainmentAdapter extends RecyclerView.Adapter<EntertainmentAdap
         holder.foodTitle.setText(entertainmentDescribe.getTitle());
         holder.userNickName.setText(entertainmentDescribe.getNickName());
         holder.entertainmentId.setText(entertainmentDescribe.getId());
+
+        holder.entertainmentSurface.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String contentId = entertainmentDescribes.get(position).getId();
+                Intent intent = new Intent(v.getContext(), ContentDetailActivity.class);
+                intent.putExtra("contentId",contentId);
+                EnterttainmentFragment.enterttainmentFragment.startActivity(intent);
+            }
+        });
     }
 
     @Override

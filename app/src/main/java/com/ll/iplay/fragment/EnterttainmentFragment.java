@@ -37,11 +37,14 @@ public class EnterttainmentFragment extends Fragment {
 
     private RecyclerView recyclerView;
 
+    public static EnterttainmentFragment enterttainmentFragment;
+
     private List<EntertainmentDescribe> entertainmentDescribes = new ArrayList<EntertainmentDescribe>();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        enterttainmentFragment = this;
         View view =inflater.inflate(R.layout.entertainment_fragment,container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);

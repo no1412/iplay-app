@@ -51,7 +51,8 @@
             android:value="8754fd4b85082d96591503cad2b49785" />
 
         <activity android:name=".UploadThingsActivity" />
-        <activity android:name=".ContentDetailActivity"></activity>
+        <activity android:name=".ContentDetailActivity" />
+        <activity android:name=".UserInforSettingActivity"></activity>
     </application>
 
 </manifest>

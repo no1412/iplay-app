@@ -46,17 +46,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder>{
             foodTitle = (TextView) itemView.findViewById(R.id.id_food_title);
             userNickName = (TextView) itemView.findViewById(R.id.id_user_nick_name);
 
-            foodSurface.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    FoodFragment.foodFragment.getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(FoodFragment.foodFragment.getActivity(), "click", Toast.LENGTH_LONG).show();
-                        }
-                    });
-                }
-            });
         }
     }
 

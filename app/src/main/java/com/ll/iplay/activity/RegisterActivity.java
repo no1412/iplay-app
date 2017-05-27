@@ -96,6 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         phoneEditText.setError("该手机号已存在");
+                                        Toast.makeText(RegisterActivity.this, "该手机号已存在！", Toast.LENGTH_LONG).show();
                                     }
                                 });
                             } else if (responseText.equals(Constants.SUCCESS)) {
