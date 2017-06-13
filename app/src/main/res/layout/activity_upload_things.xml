@@ -30,6 +30,15 @@
             android:layout_alignTop="@+id/id_publish_image"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="分享信息"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView4" />
     </RelativeLayout>
 
     <LinearLayout
@@ -53,8 +62,7 @@
         <View
             android:layout_height="2px"
             android:layout_width="match_parent"
-            android:background="@color/gray"
-        />
+            android:background="@color/gray" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -105,8 +113,7 @@
     <View
         android:layout_height="2px"
         android:layout_width="match_parent"
-        android:background="@color/gray"
-        />
+        android:background="@color/gray" />
 
     <LinearLayout
         android:layout_width="match_parent"

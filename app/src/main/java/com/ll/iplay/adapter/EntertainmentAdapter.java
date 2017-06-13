@@ -64,8 +64,10 @@ public class EntertainmentAdapter extends RecyclerView.Adapter<EntertainmentAdap
         Glide
             .with(mContext)
             .load(entertainmentDescribes.get(position).getSurface())
-            .override(500, 600) // resizes the image to these dimensions (in pixel)
-            .fitCenter() // this cropping technique scales the image so that it fills the requested bounds and then crops the extra.
+            .placeholder(R.drawable.place_holder)
+            .override(200, 200) // resizes the image to these dimensions (in pixel)
+            .centerCrop()
+            //.fitCenter() // this cropping technique scales the image so that it fills the requested bounds and then crops the extra.
             .into(holder.entertainmentSurface);
         //holder.foodSurface.setImageResource(food.getFoodSurface());
         Glide
@@ -91,5 +93,13 @@ public class EntertainmentAdapter extends RecyclerView.Adapter<EntertainmentAdap
     @Override
     public int getItemCount() {
         return entertainmentDescribes.size();
+    }
+
+    public List<EntertainmentDescribe> getEntertainmentDescribes() {
+        return entertainmentDescribes;
+    }
+
+    public void setEntertainmentDescribes(List<EntertainmentDescribe> entertainmentDescribes) {
+        this.entertainmentDescribes = entertainmentDescribes;
     }
 }

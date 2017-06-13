@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -22,11 +24,13 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.ll.iplay.adapter.MyFragmentPagerAdapter;
 import com.ll.iplay.common.Constants;
 import com.ll.iplay.fragment.EnterttainmentFragment;
 import com.ll.iplay.fragment.FoodFragment;
 import com.ll.iplay.fragment.MyFragment;
 import com.ll.iplay.refactor.FixedSpeedScroller;
+import com.loc.f;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -37,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button publishBtn;
     private ViewPager mainViewPager;
-    private TextView foodTextView;
+    private TextView foodTextView, searchTextView;
     private TextView entertainmentView;
     private TextView myTextView;
     private TextView cityLocationTextView;
@@ -46,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout myLinearLayout;
     private RelativeLayout topBarRelativeLayout;
 
-    private PagerAdapter pagerAdapter;
+    private MyFragmentPagerAdapter myFragmentPagerAdapter;
 
     private FoodFragment foodFragment;
     private EnterttainmentFragment enterttainmentFragment;
@@ -81,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         mainViewPager = (ViewPager) findViewById(R.id.id_main_viewpager);
         setViewPagerScrollSpeed();
         foodTextView = (TextView) findViewById(R.id.id_tv_food);
+        searchTextView  = (TextView) findViewById(R.id.id_search_text);
         entertainmentView = (TextView) findViewById(R.id.id_tv_entertainment);
         myTextView = (TextView) findViewById(R.id.id_tv_my);
         cityLocationTextView = (TextView) findViewById(R.id.id_city_location);
@@ -101,17 +106,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentList.add(enterttainmentFragment);
         fragmentList.add(myFragment);
 
-        pagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-                return fragmentList.get(position);
-            }
-
-            @Override
-            public int getCount() {
-                return fragmentList.size();
-            }
-        };
+        myFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList);
 
         /*mainViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -140,6 +135,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });*/
+
+        searchTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
 
         publishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mainViewPager.setAdapter(pagerAdapter);
+        mainViewPager.setAdapter(myFragmentPagerAdapter);
     }
 
     /**
@@ -256,5 +259,8 @@ public class MainActivity extends AppCompatActivity {
         //启动定位
         mLocationClient.startLocation();
 
+    }
+    private static String makeFragmentName(int viewId, long id) {
+        return "android:switcher:" + viewId + ":" + id;
     }
 }

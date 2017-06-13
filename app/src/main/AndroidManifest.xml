@@ -52,7 +52,13 @@
 
         <activity android:name=".UploadThingsActivity" />
         <activity android:name=".ContentDetailActivity" />
-        <activity android:name=".UserInforSettingActivity"></activity>
+        <activity android:name=".UserInforSettingActivity" />
+        <activity
+            android:name=".SearchActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".ModifyUserNickNameActivity" />
+        <activity android:name=".ModifyUserPhoneActivity" />
+        <activity android:name=".ModifyUserEmailActivity"></activity>
     </application>
 
 </manifest>

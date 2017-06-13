@@ -6,19 +6,19 @@
     android:background="@color/white"
     android:layout_margin="5dp">
 
-    <TextView
-        android:id="@+id/id_entertainment_id"
-        android:visibility="gone"
+    <LinearLayout
+        android:id="@+id/id_content_linear_layout_id"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <ImageView
-        android:id="@+id/id_entertainment_surface"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/avatar"/>
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/id_content_surface"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/avatar"/>
+    </LinearLayout>
     <TextView
-        android:id="@+id/id_entertainment_title"
+        android:id="@+id/id_content_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"

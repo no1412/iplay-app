@@ -2,8 +2,6 @@ package com.ll.iplay.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,16 +9,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.ll.iplay.activity.ContentDetailActivity;
-import com.ll.iplay.activity.MainActivity;
 import com.ll.iplay.activity.R;
 import com.ll.iplay.fragment.FoodFragment;
+import com.ll.iplay.gson.ContentDescribe;
 import com.ll.iplay.gson.FoodDescribe;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -28,69 +23,69 @@ import java.util.List;
  * Created by ll on 2017/5/2.
  */
 
-public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder>{
+public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHolder>{
 
-    private List<FoodDescribe> foodDescribes;
+    private List<ContentDescribe> contentDescribes;
     private Context mContext;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView foodSurface;
+        ImageView contentSurface;
         ImageView userHead;
-        TextView foodTitle;
+        TextView contentTitle;
         TextView userNickName;
-        LinearLayout foodId;
+        LinearLayout contentId;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            foodId = (LinearLayout) itemView.findViewById(R.id.id_food_id);
-            foodSurface = (ImageView) itemView.findViewById(R.id.id_food_surface);
+            contentId = (LinearLayout) itemView.findViewById(R.id.id_content_linear_layout_id);
+            contentSurface = (ImageView) itemView.findViewById(R.id.id_content_surface);
             userHead = (ImageView) itemView.findViewById(R.id.id_user_head_pic);
-            foodTitle = (TextView) itemView.findViewById(R.id.id_food_title);
+            contentTitle = (TextView) itemView.findViewById(R.id.id_content_title);
             userNickName = (TextView) itemView.findViewById(R.id.id_user_nick_name);
 
         }
     }
 
-    public FoodAdapter(Context mContext, List<FoodDescribe> foodDescribes) {
+    public ContentAdapter(Context mContext, List<ContentDescribe> contentDescribes) {
         this.mContext = mContext;
-        this.foodDescribes = foodDescribes;
+        this.contentDescribes = contentDescribes;
     }
 
     @Override
-    public FoodAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_item, parent, false);
+    public ContentAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(FoodAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(ContentAdapter.ViewHolder holder, final int position) {
 
-        FoodDescribe foodDescribe = foodDescribes.get(position);
+        ContentDescribe contentDescribe = contentDescribes.get(position);
         //Glide.with(mContext).load(mFoodList.get(position).getFoodSurface()).into(holder.foodSurface);
         Glide
             .with(mContext)
-            .load(foodDescribes.get(position).getSurface())
+            .load(contentDescribes.get(position).getSurface())
             .placeholder(R.drawable.place_holder)
             .override(200, 200) // resizes the image to these dimensions (in pixel)
             .centerCrop()
             //.fitCenter() // this cropping technique scales the image so that it fills the requested bounds and then crops the extra.
-            .into(holder.foodSurface);
+            .into(holder.contentSurface);
         //holder.foodSurface.setImageResource(food.getFoodSurface());
         Glide
             .with(mContext)
-            .load(foodDescribes.get(position).getHeadPicUrl())
+            .load(contentDescribes.get(position).getHeadPicUrl())
             .fitCenter() // this cropping technique scales the image so that it fills the requested bounds and then crops the extra.
             .into(holder.userHead);
-        holder.foodTitle.setText(foodDescribe.getTitle());
-        holder.userNickName.setText(foodDescribe.getNickName());
+        holder.contentTitle.setText(contentDescribe.getTitle());
+        holder.userNickName.setText(contentDescribe.getNickName());
         //holder.foodId.set(foodDescribe.getId());
 
 
-        holder.foodSurface.setOnClickListener(new View.OnClickListener() {
+        holder.contentSurface.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String contentId = foodDescribes.get(position).getId();
+                String contentId = contentDescribes.get(position).getId();
                 Intent intent = new Intent(v.getContext(), ContentDetailActivity.class);
                 intent.putExtra("contentId",contentId);
                 FoodFragment.foodFragment.startActivity(intent);
@@ -100,14 +95,14 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder>{
 
     @Override
     public int getItemCount() {
-        return foodDescribes.size();
+        return contentDescribes.size();
     }
 
-    public List<FoodDescribe> getFoodDescribes() {
-        return foodDescribes;
+    public List<ContentDescribe> getContentDescribes() {
+        return contentDescribes;
     }
 
-    public void setFoodDescribes(List<FoodDescribe> foodDescribes) {
-        this.foodDescribes = foodDescribes;
+    public void setContentDescribes(List<ContentDescribe> contentDescribes) {
+        this.contentDescribes = contentDescribes;
     }
 }

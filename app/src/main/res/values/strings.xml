@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">IPlay</string>
     <string name="test">IPlay</string>
+    <string name="user_nick_name">昵称</string>
+    <string name="user_info">个人资料</string>
+    <string name="user_email">邮箱</string>
+    <string name="user_phone">手机</string>
 </resources>

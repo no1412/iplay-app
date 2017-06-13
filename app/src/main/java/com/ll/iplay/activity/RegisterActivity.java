@@ -20,6 +20,7 @@ import com.throrinstudio.android.common.libs.validator.validator.LengthValidator
 import com.throrinstudio.android.common.libs.validator.validator.NotEmptyValidator;
 import com.throrinstudio.android.common.libs.validator.validator.PhoneValidator;
 import com.throrinstudio.android.common.libs.validator.validator.RangeValidator;
+import com.throrinstudio.android.common.libs.validator.validator.RegExpValidator;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -168,8 +169,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         phoneValidate.addValidator(new NotEmptyValidator(this,R.string.phone_not_empty));
         phoneValidate.addValidator(new PhoneValidator(this));
+        phoneValidate.addValidator(new LengthValidator(this, 11, 11, R.string.phone_length_error));
         nickNameValidate.addValidator(new NotEmptyValidator(this,R.string.nick_name_not_empty));
-        nickNameValidate.addValidator(new LengthValidator(this,1,10,R.string.nick_name_error_msg));
+        nickNameValidate.addValidator(new LengthValidator(this,1,20,R.string.nick_name_error_msg));
         passwordValidate.addValidator(new NotEmptyValidator(this,R.string.password_not_empty));
         passwordValidate.addValidator(new LengthValidator(this,6,-1,R.string.password_error_msg));
         confirmPasswordValidate.addValidator(new NotEmptyValidator(this,R.string.confirm_password_not_empty));

@@ -135,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
 
         phoneValidate.addValidator(new NotEmptyValidator(this,R.string.phone_not_empty));
         phoneValidate.addValidator(new PhoneValidator(this));
+        phoneValidate.addValidator(new LengthValidator(this, 11, 11, R.string.phone_length_error));
         passwordValidate.addValidator(new NotEmptyValidator(this,R.string.password_not_empty));
         passwordValidate.addValidator(new LengthValidator(this,6,-1,R.string.password_error_msg));
 
